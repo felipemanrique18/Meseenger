@@ -3,7 +3,7 @@
 @section('content')
 <b-container>
     <b-row align-h="center">
-        <b-col cols="5">
+        <b-col class="col-lg-4 col-md-8 col-sm-12">
             <b-card
               title="Inico de session"
             >
@@ -44,6 +44,13 @@
                               Recordar session
                             </b-form-checkbox>
                         </b-form-group>
+                        @error('email')
+                            <b-form-group>
+                                <b-alert variant="danger" show>
+                                  {{ $message }}
+                                </b-alert>
+                            </b-form-group>
+                        @enderror
                         <b-button type="submit" variant="primary">Ingresar</b-button>
 
                         <b-button href="{{ route('password.request') }}" variant="link">Olvidate tu contraseña</b-button>
