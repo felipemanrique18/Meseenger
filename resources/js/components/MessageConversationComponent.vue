@@ -14,11 +14,10 @@
         },
     	data() {
 			return{
-                contenido:'as'
 			}
 		},
         mounted() {
-            console.log('Component mounted.')
+            
         }
     }
 </script>

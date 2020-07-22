@@ -4,6 +4,8 @@ namespace App\Observers;
 
 use App\Message;
 use App\Conversation;
+use App\Events\MessageSent;
+use Carbon\Carbon;
 
 class MessageObserver
 {
@@ -26,10 +28,13 @@ class MessageObserver
         $conversation = Conversation::where('contact_id',$message->from_id)->where('user_id',$message->to_id)->first();
 
         if($conversation){
-            $conversation->last_message="$conversation->contact_name: $message->content";
+            $conversation->last_message="$message->content";
             $conversation->last_time=$message->created_at;
+
             $conversation->save();
         }
+        // broadcast(new MessageSent($message));
+        event(new MessageSent($message));
     }
 
     /**

@@ -13,7 +13,8 @@
                 v-for="conversation in conversations"
                 :key="conversation.id"
                 :conversation="conversation"
-                @click.native="selectConversation(conversation)">         
+                @click.native="selectConversation(conversation)"
+                class="list-contact">         
             </contacto-component>
             <!-- <contacto-component variant="dark"></contacto-component>
             <contacto-component></contacto-component>
@@ -25,24 +26,21 @@
 
 <script>
     export default {
+        props:{
+            conversations:Array
+        },
     	data() {
 			return{
-                conversations:[],
 
 			};
 		},
         mounted() {
-            this.getConversations();
+
         },
         methods:{
-            getConversations(){
-                axios.get('api/conversations')
-                .then((response)=>{
-                    this.conversations =response.data;
-                });
-            },
             selectConversation(conversation){
-                console.log(conversation);
+                // console.log(conversation);
+                this.$emit('conversationSelected',conversation);
             }
         }
     }

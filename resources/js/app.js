@@ -25,7 +25,7 @@ Vue.use(IconsPlugin);
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
+Vue.component('messenger-component', require('./components/MessengerComponent.vue').default);
 Vue.component('contacto-component', require('./components/contactoComponent.vue').default);
 Vue.component('contactolist-component', require('./components/contactoListComponent.vue').default);
 Vue.component('activeconversation-component', require('./components/ActiveConversationComponent.vue').default);
@@ -43,5 +43,11 @@ const app = new Vue({
     	logout(){
     		document.getElementById('logout-form').submit();
     	}
+    },
+    created(){
+    	// var userId=($('meta[name="userId"]').attr('content'));
+     //    Echo.private('App.User.' + userId)
+     //    .notification((notification) => {
+     //    });
     }
 });

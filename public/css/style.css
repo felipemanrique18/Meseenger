@@ -1,0 +1,9 @@
+.list-contact {
+  cursor: pointer;
+  transition: background 0.1s ease-in-out;
+}
+
+.list-contact:hover {
+  background: #e9ecef;
+}
+
